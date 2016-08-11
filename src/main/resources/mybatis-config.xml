@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db2.properties">
+		<property name="db_encoding" value="UTF8" />
+	</properties>
+	<typeAliases>
+		<typeAlias alias="Type" type="zx.soft.datadump.domain.Type" />
+	</typeAliases>
+	<environments default="db2">
+		<environment id="db2">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="url" value="${db2.url}" />
+				<property name="username" value="${db2.username}" />
+				<property name="password" value="${db2.password}" />
+				<property name="driver" value="${db2.driver}" />
+				<property name="driver.encoding" value="${db_encoding}" />
+				<property name="poolPingEnabled" value="true" />
+				<property name="poolPingQuery" value="select 1" />
+				<property name="poolPingConnectionsNotUsedFor" value="5000" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<package name="zx.soft.datadump.mapper"/>
+	</mappers>
+</configuration>
+	
